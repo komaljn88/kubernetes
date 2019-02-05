@@ -69,6 +69,7 @@ import (
 	cmdutil "k8s.io/kubernetes/pkg/kubectl/cmd/util"
 	"k8s.io/kubernetes/pkg/kubectl/cmd/version"
 	"k8s.io/kubernetes/pkg/kubectl/cmd/wait"
+	"k8s.io/kubernetes/pkg/kubectl/cmd/xyz"
 	"k8s.io/kubernetes/pkg/kubectl/util/i18n"
 	"k8s.io/kubernetes/pkg/kubectl/util/templates"
 
@@ -563,6 +564,7 @@ func NewKubectlCommand(in io.Reader, out, err io.Writer) *cobra.Command {
 	cmds.AddCommand(apiresources.NewCmdAPIVersions(f, ioStreams))
 	cmds.AddCommand(apiresources.NewCmdAPIResources(f, ioStreams))
 	cmds.AddCommand(options.NewCmdOptions(ioStreams.Out))
+	cmds.AddCommand(xyz.NewCmdXyz(f, clientcmd.NewDefaultPathOptions(), ioStreams))
 
 	return cmds
 }
